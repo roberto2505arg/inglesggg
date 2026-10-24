@@ -6,6 +6,13 @@
     <title>Gonzalo Gabriel Gutiérrez | Profesor de Inglés Online</title>
     <!-- Fuentes de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK para envío de correos desde el navegador -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("Uu_RL7RrFthCiDEbd");
+        })();
+    </script>
     <style>
         /* Variables de color */
         :root {
@@ -16,6 +23,8 @@
             --text-light: #718096;
             --bg-light: #f7fafc;
             --white: #ffffff;
+            --correct-color: #38a169;
+            --incorrect-color: #e53e3e;
         }
 
         /* Estilos generales */
@@ -251,6 +260,99 @@
             margin-bottom: 10px;
         }
 
+        /* Sección Test de Nivel */
+        .test-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .test-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .test-container h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .test-intro {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .question-card {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .question-card p {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .question-card input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+        }
+
+        .results-box {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #edf2f7;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .results-box h3 {
+            margin-bottom: 15px;
+        }
+
+        .correction-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: white;
+        }
+
+        .correction-item.correct {
+            border-left: 4px solid var(--correct-color);
+        }
+
+        .correction-item.incorrect {
+            border-left: 4px solid var(--incorrect-color);
+        }
+
         /* Sección Contacto */
         .contact {
             padding: 80px 0;
@@ -340,6 +442,7 @@
                     <li><a href="#sobre-mi">Sobre Mí</a></li>
                     <li><a href="#servicios">Clases</a></li>
                     <li><a href="#modalidades">Modalidades</a></li>
+                    <li><a href="#test-nivel">Test de Nivel</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
@@ -358,7 +461,6 @@
     <!-- Sobre Mí -->
     <section id="sobre-mi" class="about">
         <div class="container about-grid">
-            <!-- Reemplaza 'ruta-de-tu-foto.jpg' con el nombre de tu archivo de imagen -->
             <img src="gonza.jpg" alt="Gonzalo Gabriel Gutiérrez - Profesor de Inglés" class="about-img">
             <div class="about-text">
                 <h2>Hola, soy Gonzalo Gabriel Gutiérrez</h2>
@@ -420,6 +522,69 @@
         </div>
     </section>
 
+    <!-- Test de Nivel Secundario -->
+    <section id="test-nivel" class="test-section">
+        <div class="container">
+            <div class="test-container">
+                <h2>Test de Nivelación - Nivel Secundario</h2>
+                <p class="test-intro">Completa las oraciones. No importa si usas mayúsculas o minúsculas. Al finalizar obtendrás tus resultados e informe por correo.</p>
+
+                <form id="englishTestForm">
+                    <div class="form-group">
+                        <label for="studentName">Nombre y Apellido:</label>
+                        <input type="text" id="studentName" required placeholder="Ej. Juan Pérez">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentEmail">Correo Electrónico (Gmail / Otro):</label>
+                        <input type="email" id="studentEmail" required placeholder="tu-email@gmail.com">
+                    </div>
+
+                    <hr style="margin: 20px 0; border: none; border-top: 1px solid #e2e8f0;">
+
+                    <!-- Pregunta 1 -->
+                    <div class="question-card">
+                        <p>1. She ______ (not / go) to school yesterday because she was sick.</p>
+                        <input type="text" id="q1" required placeholder="Escribe la respuesta...">
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="question-card">
+                        <p>2. While I was studying, my friends ______ (call) me.</p>
+                        <input type="text" id="q2" required placeholder="Escribe la respuesta...">
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="question-card">
+                        <p>3. If it rains tomorrow, we ______ (stay) at home.</p>
+                        <input type="text" id="q3" required placeholder="Escribe la respuesta...">
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="question-card">
+                        <p>4. They ______ (live) in Buenos Aires since 2018.</p>
+                        <input type="text" id="q4" required placeholder="Escribe la respuesta...">
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="question-card">
+                        <p>5. This house is ______ (big) than my old apartment.</p>
+                        <input type="text" id="q5" required placeholder="Escribe la respuesta...">
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%;">Enviar Respuestas y Obtener Resultado</button>
+                </form>
+
+                <!-- Área donde se muestra la corrección al usuario -->
+                <div id="results" class="results-box">
+                    <h3 id="scoreText"></h3>
+                    <p id="feedbackSummary" style="margin-bottom: 15px; font-weight: 600;"></p>
+                    <div id="correctionsList"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contacto -->
     <section id="contacto" class="contact">
         <div class="container">
@@ -446,5 +611,88 @@
         </div>
     </footer>
 
+    <!-- Lógica de Corrección y Envío por Mail -->
+    <script>
+        const correctAnswers = {
+            q1: ["didn't go", "did not go"],
+            q2: ["called"],
+            q3: ["will stay", "'ll stay"],
+            q4: ["have lived", "'ve lived", "have been living"],
+            q5: ["bigger"]
+        };
+
+        document.getElementById('englishTestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentEmail = document.getElementById('studentEmail').value.trim();
+
+            let score = 0;
+            const totalQuestions = 5;
+            let correctionsHTML = '';
+            let emailReport = `Reporte del Test de Nivel - Alumno: ${studentName}\nEmail: ${studentEmail}\n\n`;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const inputVal = document.getElementById(`q${i}`).value.trim().toLowerCase();
+                const validAnswers = correctAnswers[`q${i}`];
+                const isCorrect = validAnswers.some(ans => ans.toLowerCase() === inputVal);
+
+                if (isCorrect) {
+                    score++;
+                    correctionsHTML += `
+                        <div class="correction-item correct">
+                            <p><strong>Pregunta ${i}:</strong> ¡Correcto! Respondiste: <em>"${document.getElementById(`q${i}`).value}"</em></p>
+                        </div>
+                    `;
+                    emailReport += `Pregunta ${i}: Correcta (${document.getElementById(`q${i}`).value})\n`;
+                } else {
+                    correctionsHTML += `
+                        <div class="correction-item incorrect">
+                            <p><strong>Pregunta ${i}:</strong> Tu respuesta: <em>"${document.getElementById(`q${i}`).value}"</em></p>
+                            <p>👉 Respuesta sugerida: <strong>${validAnswers.join(' / ')}</strong></p>
+                        </div>
+                    `;
+                    emailReport += `Pregunta ${i}: Incorrecta. Respuesta del alumno: "${document.getElementById(`q${i}`).value}". Correcta: ${validAnswers.join(' / ')}\n`;
+                }
+            }
+
+            const percentage = (score / totalQuestions) * 100;
+            let levelMessage = '';
+
+            if (percentage >= 80) {
+                levelMessage = "Excelente nivel. Tienes muy buenas bases de gramática secundario/intermedio.";
+            } else if (percentage >= 50) {
+                levelMessage = "Nivel Intermedio Medio. Tienes buenas bases pero hay temas gramaticales que reforzar.";
+            } else {
+                levelMessage = "Nivel Inicial / A reforzar. Se recomienda apoyo con un plan personalizado.";
+            }
+
+            // Mostrar resultados en la pantalla
+            document.getElementById('scoreText').innerText = `Tu Puntaje: ${score} / ${totalQuestions} (${percentage}%)`;
+            document.getElementById('feedbackSummary').innerText = `Diagnóstico: ${levelMessage}`;
+            document.getElementById('correctionsList').innerHTML = correctionsHTML;
+            document.getElementById('results').style.display = 'block';
+
+            // Desplazar suavemente a los resultados
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+
+            // Enviar email vía EmailJS
+            const templateParams = {
+                student_name: studentName,
+                student_email: studentEmail,
+                score: `${score}/${totalQuestions}`,
+                percentage: `${percentage}%`,
+                feedback: levelMessage,
+                report_details: emailReport
+            };
+
+            emailjs.send('service_rgmgn8s', '2ntyylid', templateParams)
+                .then(function(response) {
+                    alert('¡Resultados generados y enviados exitosamente por correo!');
+                }, function(error) {
+                    alert('Se generó la corrección en pantalla, pero hubo un error al enviar el correo automático.');
+                });
+        });
+    </script>
 </body>
 </html>
