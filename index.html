@@ -4,437 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gonzalo Gabriel Gutiérrez | Profesor de Inglés Online</title>
-    <!-- Fuentes de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- EmailJS SDK para envío de correos desde el navegador -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            // Inicialización de EmailJS con tu Public Key
             emailjs.init("Uu_RL7RrFthCiDEbd");
         })();
     </script>
     <style>
-        /* Variables de color */
         :root {
-            --primary-color: #1a365d; /* Azul oscuro elegante */
-            --secondary-color: #2b6cb0; /* Azul medio */
-            --accent-color: #ed8936; /* Naranja para botones de acción */
-            --text-dark: #2d3748;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
-            --white: #ffffff;
-            --correct-color: #38a169;
-            --incorrect-color: #e53e3e;
+            --primary-color: #1a365d; --secondary-color: #2b6cb0; --accent-color: #ed8936;
+            --text-dark: #2d3748; --text-light: #718096; --bg-light: #f7fafc; --white: #ffffff;
+            --correct-color: #38a169; --incorrect-color: #e53e3e;
         }
-
-        /* Estilos generales */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: var(--bg-light);
-        }
-
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--primary-color);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Botones */
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 12px 28px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #dd6b20;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--white);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--white);
-            color: var(--primary-color);
-        }
-
-        /* Header / Navegación */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 160px 0 100px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            color: var(--white);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-
-        /* Sección Sobre Mí */
-        .about {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            justify-self: center;
-        }
-
-        .about-text h2 {
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-
-        /* Sección Servicios */
-        .services {
-            padding: 80px 0;
-            background-color: var(--bg-light);
-            text-align: center;
-        }
-
-        .services h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .services > p {
-            color: var(--text-light);
-            margin-bottom: 50px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            text-align: left;
-            border-top: 4px solid var(--secondary-color);
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .service-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Sección Modalidades */
-        .modalities {
-            padding: 80px 0;
-            background-color: var(--white);
-            text-align: center;
-        }
-
-        .modalities h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-
-        .modalities-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .modality-item {
-            flex: 1;
-            min-width: 280px;
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .modality-item h3 {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-
-        /* Sección Test de Nivel */
-        .test-section {
-            padding: 80px 0;
-            background-color: var(--bg-light);
-        }
-
-        .test-container {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .test-container h2 {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .test-intro {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e0;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .question-card {
-            background: var(--bg-light);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        .question-card p {
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .question-card input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #cbd5e0;
-            border-radius: 4px;
-        }
-
-        .results-box {
-            display: none;
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #edf2f7;
-            border: 2px solid var(--secondary-color);
-        }
-
-        .results-box h3 {
-            margin-bottom: 15px;
-        }
-
-        .correction-item {
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            background: white;
-        }
-
-        .correction-item.correct {
-            border-left: 4px solid var(--correct-color);
-        }
-
-        .correction-item.incorrect {
-            border-left: 4px solid var(--incorrect-color);
-        }
-
-        /* Sección Contacto */
-        .contact {
-            padding: 80px 0;
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .contact h2 {
-            color: var(--white);
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .contact p {
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-        }
-
-        .contact-item a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0f2440;
-            color: var(--text-light);
-            text-align: center;
-            padding: 20px 0;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.6; background-color: var(--bg-light); }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--primary-color); }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .btn { display: inline-block; background-color: var(--accent-color); color: var(--white); padding: 12px 28px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s ease; border: none; cursor: pointer; }
+        .btn:hover { background-color: #dd6b20; }
+        .btn-outline { background-color: transparent; border: 2px solid var(--white); }
+        .btn-outline:hover { background-color: var(--white); color: var(--primary-color); }
+        header { background-color: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        .logo span { color: var(--accent-color); }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: var(--accent-color); }
+        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); padding: 160px 0 100px; text-align: center; }
+        .hero h1 { color: var(--white); font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; opacity: 0.9; }
+        .about { padding: 80px 0; background-color: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-img { width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); justify-self: center; }
+        .about-text h2 { margin-bottom: 20px; font-size: 2rem; }
+        .about-text p { margin-bottom: 15px; color: var(--text-light); }
+        .services { padding: 80px 0; background-color: var(--bg-light); text-align: center; }
+        .services h2 { font-size: 2rem; margin-bottom: 10px; }
+        .services > p { color: var(--text-light); margin-bottom: 50px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card { background: var(--white); padding: 40px 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease; text-align: left; border-top: 4px solid var(--secondary-color); }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-card h3 { margin-bottom: 15px; font-size: 1.3rem; }
+        .service-card p { color: var(--text-light); font-size: 0.95rem; }
+        .modalities { padding: 80px 0; background-color: var(--white); text-align: center; }
+        .modalities h2 { font-size: 2rem; margin-bottom: 40px; }
+        .modalities-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .modality-item { flex: 1; min-width: 280px; background: var(--bg-light); padding: 30px; border-radius: 10px; text-align: center; }
+        .modality-item h3 { color: var(--secondary-color); margin-bottom: 10px; }
+        .test-section { padding: 80px 0; background-color: var(--bg-light); }
+        .test-container { background: var(--white); padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; }
+        .test-container h2 { text-align: center; margin-bottom: 10px; }
+        .test-intro { text-align: center; color: var(--text-light); margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; }
+        .form-group input[type="text"], .form-group input[type="email"] { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px; font-size: 1rem; }
+        .question-card { background: var(--bg-light); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--secondary-color); }
+        .question-card p { font-weight: 600; margin-bottom: 10px; }
+        .question-card input[type="text"] { width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 4px; }
+        .results-box { display: none; margin-top: 30px; padding: 20px; border-radius: 8px; background-color: #edf2f7; border: 2px solid var(--secondary-color); }
+        .results-box h3 { margin-bottom: 15px; }
+        .correction-item { margin-bottom: 10px; padding: 10px; border-radius: 5px; background: white; }
+        .correction-item.correct { border-left: 4px solid var(--correct-color); }
+        .correction-item.incorrect { border-left: 4px solid var(--incorrect-color); }
+        .contact { padding: 80px 0; background-color: var(--primary-color); color: var(--white); text-align: center; }
+        .contact h2 { color: var(--white); font-size: 2rem; margin-bottom: 20px; }
+        .contact p { margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9; }
+        .contact-info { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
+        .contact-item { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
+        .contact-item a { color: var(--white); text-decoration: none; font-weight: 600; }
+        .contact-item a:hover { color: var(--accent-color); }
+        footer { background-color: #0f2440; color: var(--text-light); text-align: center; padding: 20px 0; font-size: 0.9rem; }
         @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero {
-                padding: 140px 0 80px;
-            }
+            .nav-container { flex-direction: column; gap: 15px; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2rem; }
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero { padding: 140px 0 80px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">Gonzalo <span>Gutiérrez</span></a>
@@ -450,7 +102,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>Domina el Inglés con un Plan Hecho a tu Medida</h1>
@@ -459,10 +110,8 @@
         </div>
     </section>
 
-    <!-- Sobre Mí -->
     <section id="sobre-mi" class="about">
         <div class="container about-grid">
-            <!-- Asegurate de que el nombre de tu foto coincida exactamente -->
             <img src="gonza.jpg" alt="Gonzalo Gabriel Gutiérrez - Profesor de Inglés" class="about-img">
             <div class="about-text">
                 <h2>Hola, soy Gonzalo Gabriel Gutiérrez</h2>
@@ -473,7 +122,6 @@
         </div>
     </section>
 
-    <!-- Servicios / Clases -->
     <section id="servicios" class="services">
         <div class="container">
             <h2>¿Qué ofrezco?</h2>
@@ -507,7 +155,6 @@
         </div>
     </section>
 
-    <!-- Modalidades -->
     <section id="modalidades" class="modalities">
         <div class="container">
             <h2>Modalidades de Clases</h2>
@@ -524,7 +171,6 @@
         </div>
     </section>
 
-    <!-- Test de Nivel Secundario -->
     <section id="test-nivel" class="test-section">
         <div class="container">
             <div class="test-container">
@@ -536,48 +182,35 @@
                         <label for="studentName">Nombre y Apellido:</label>
                         <input type="text" id="studentName" required placeholder="Ej. Juan Pérez">
                     </div>
-
                     <div class="form-group">
                         <label for="studentEmail">Correo Electrónico (Gmail / Otro):</label>
                         <input type="email" id="studentEmail" required placeholder="tu-email@gmail.com">
                     </div>
-
                     <hr style="margin: 20px 0; border: none; border-top: 1px solid #e2e8f0;">
 
-                    <!-- Pregunta 1 -->
                     <div class="question-card">
                         <p>1. She ______ (not / go) to school yesterday because she was sick.</p>
                         <input type="text" id="q1" required placeholder="Escribe la respuesta...">
                     </div>
-
-                    <!-- Pregunta 2 -->
                     <div class="question-card">
                         <p>2. While I was studying, my friends ______ (call) me.</p>
                         <input type="text" id="q2" required placeholder="Escribe la respuesta...">
                     </div>
-
-                    <!-- Pregunta 3 -->
                     <div class="question-card">
                         <p>3. If it rains tomorrow, we ______ (stay) at home.</p>
                         <input type="text" id="q3" required placeholder="Escribe la respuesta...">
                     </div>
-
-                    <!-- Pregunta 4 -->
                     <div class="question-card">
                         <p>4. They ______ (live) in Buenos Aires since 2018.</p>
                         <input type="text" id="q4" required placeholder="Escribe la respuesta...">
                     </div>
-
-                    <!-- Pregunta 5 -->
                     <div class="question-card">
                         <p>5. This house is ______ (big) than my old apartment.</p>
                         <input type="text" id="q5" required placeholder="Escribe la respuesta...">
                     </div>
-
                     <button type="submit" class="btn" style="width: 100%;">Enviar Respuestas y Obtener Resultado</button>
                 </form>
 
-                <!-- Área donde se muestra la corrección al usuario -->
                 <div id="results" class="results-box">
                     <h3 id="scoreText"></h3>
                     <p id="feedbackSummary" style="margin-bottom: 15px; font-weight: 600;"></p>
@@ -587,12 +220,10 @@
         </div>
     </section>
 
-    <!-- Contacto -->
     <section id="contacto" class="contact">
         <div class="container">
             <h2>¿Listo para empezar?</h2>
             <p>Escríbeme para coordinar una clase de prueba y armar tu plan de estudio personalizado.</p>
-            
             <div class="contact-info">
                 <div class="contact-item">
                     <span>📍</span> <span>Ciudad de Buenos Aires</span>
@@ -601,19 +232,16 @@
                     <span>📱</span> <a href="https://wa.me/5492995495211" target="_blank">+54 9 299 549-5211</a>
                 </div>
             </div>
-
             <a href="https://wa.me/5492995495211?text=Hola%20Gonzalo,%20me%20interesa%20tomar%20clases%20de%20inglés" class="btn btn-outline" target="_blank">Enviar Mensaje por WhatsApp</a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Gonzalo Gabriel Gutiérrez. Profesor de Inglés Online. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Lógica de Corrección y Envío por Mail -->
     <script>
         const correctAnswers = {
             q1: ["didn't go", "did not go"],
@@ -626,6 +254,7 @@
         document.getElementById('englishTestForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
+            // Aquí estaba el error de tipeo, ahora está corregido a minúsculas
             const studentName = document.getElementById('studentName').value.trim();
             const studentEmail = document.getElementById('studentEmail').value.trim();
 
@@ -669,16 +298,13 @@
                 levelMessage = "Nivel Inicial / A reforzar. Se recomienda apoyo con un plan personalizado.";
             }
 
-            // Mostrar resultados en la pantalla
             document.getElementById('scoreText').innerText = `Tu Puntaje: ${score} / ${totalQuestions} (${percentage}%)`;
             document.getElementById('feedbackSummary').innerText = `Diagnóstico: ${levelMessage}`;
             document.getElementById('correctionsList').innerHTML = correctionsHTML;
             document.getElementById('results').style.display = 'block';
 
-            // Desplazar suavemente a los resultados
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 
-            // Enviar email vía EmailJS
             const templateParams = {
                 student_name: studentName,
                 student_email: studentEmail,
@@ -688,14 +314,13 @@
                 report_details: emailReport
             };
 
-            // Template ID corregido según tu captura
-            emailjs.send('service_rgmgn8s', 'template_8n3lp4h', templateParams)
+            emailjs.send('service_rgmgn8s', 'template_8n3ip4h', templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     alert('¡Resultados generados y enviados exitosamente por correo!');
                 }, function(error) {
-                    console.log('FAILED...', error);
-                    alert('Se generó la corrección en pantalla, pero hubo un error al enviar el correo automático. Revisá la consola (F12) para más detalles.');
+                    console.error('FAILED...', error);
+                    alert('Error al enviar. Revisá la consola (F12) para ver el detalle exacto.');
                 });
         });
     </script>
