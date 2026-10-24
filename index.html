@@ -10,6 +10,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
+            // Inicialización de EmailJS con tu Public Key
             emailjs.init("Uu_RL7RrFthCiDEbd");
         })();
     </script>
@@ -461,6 +462,7 @@
     <!-- Sobre Mí -->
     <section id="sobre-mi" class="about">
         <div class="container about-grid">
+            <!-- Asegurate de que el nombre de tu foto coincida exactamente -->
             <img src="gonza.jpg" alt="Gonzalo Gabriel Gutiérrez - Profesor de Inglés" class="about-img">
             <div class="about-text">
                 <h2>Hola, soy Gonzalo Gabriel Gutiérrez</h2>
@@ -678,19 +680,22 @@
 
             // Enviar email vía EmailJS
             const templateParams = {
-                student_name: student_Name,
-                student_email: student_Email,
+                student_name: studentName,
+                student_email: studentEmail,
                 score: `${score}/${totalQuestions}`,
                 percentage: `${percentage}%`,
                 feedback: levelMessage,
                 report_details: emailReport
             };
 
-            emailjs.send('service_rgmgn8s', '2ntyylid', templateParams)
+            // Template ID corregido según tu captura
+            emailjs.send('service_rgmgn8s', 'template_8n3lp4h', templateParams)
                 .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
                     alert('¡Resultados generados y enviados exitosamente por correo!');
                 }, function(error) {
-                    alert('Se generó la corrección en pantalla, pero hubo un error al enviar el correo automático.');
+                    console.log('FAILED...', error);
+                    alert('Se generó la corrección en pantalla, pero hubo un error al enviar el correo automático. Revisá la consola (F12) para más detalles.');
                 });
         });
     </script>
