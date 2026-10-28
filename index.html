@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gonzalo Gabriel Gutiérrez | Profesor de Inglés Online</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title data-i18n="docTitle">Gonzalo Gabriel Gutiérrez | Profesor de Inglés Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
@@ -13,75 +13,170 @@
     </script>
     <style>
         :root {
-            --primary-color: #1a365d; --secondary-color: #2b6cb0; --accent-color: #ed8936;
-            --text-dark: #2d3748; --text-light: #718096; --bg-light: #f7fafc; --white: #ffffff;
-            --correct-color: #38a169; --incorrect-color: #e53e3e;
+            --primary-color: #1a365d; 
+            --secondary-color: #2b6cb0; 
+            --accent-color: #ed8936;
+            --accent-hover: #dd6b20;
+            --text-dark: #2d3748; 
+            --text-light: #718096; 
+            --bg-light: #f7fafc; 
+            --white: #ffffff;
+            --correct-color: #38a169; 
+            --incorrect-color: #e53e3e;
+            --purple-accent: #6b46c1;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.6; background-color: var(--bg-light); }
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--primary-color); }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .btn { display: inline-block; background-color: var(--accent-color); color: var(--white); padding: 12px 28px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s ease; border: none; cursor: pointer; }
-        .btn:hover { background-color: #dd6b20; }
-        .btn-outline { background-color: transparent; border: 2px solid var(--white); }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; color: var(--primary-color); }
+        .container { width: 92%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
+        
+        .btn { display: inline-block; background-color: var(--accent-color); color: var(--white); padding: 12px 28px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; text-align: center; }
+        .btn:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--white); color: var(--white); }
         .btn-outline:hover { background-color: var(--white); color: var(--primary-color); }
+
+        /* HEADER & MENÚ DE NAVEGACIÓN CORREGIDO Y ALINEADO */
         header { background-color: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--primary-color); text-decoration: none; white-space: nowrap; }
         .logo span { color: var(--accent-color); }
-        nav ul { list-style: none; display: flex; gap: 30px; }
-        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: color 0.3s; }
+        
+        nav ul { list-style: none; display: flex; gap: 12px; align-items: center; }
+        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: color 0.3s; font-size: 0.88rem; white-space: nowrap; }
         nav a:hover { color: var(--accent-color); }
-        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); padding: 160px 0 100px; text-align: center; }
-        .hero h1 { color: var(--white); font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
-        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; opacity: 0.9; }
-        .about { padding: 80px 0; background-color: var(--white); }
+
+        /* Estilo Botón Destacado Niños Corregido (Sin saltos de línea) */
+        .nav-kids-link { 
+            background-color: #f3e8ff; 
+            color: var(--purple-accent) !important; 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            border: 1.5px solid var(--purple-accent); 
+            font-weight: 700;
+            white-space: nowrap;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .nav-kids-link:hover { 
+            background-color: var(--purple-accent); 
+            color: var(--white) !important; 
+            transform: translateY(-1px);
+        }
+
+        /* Botón Idioma Parpadeante */
+        .lang-switch-btn {
+            background: linear-gradient(135deg, #e53e3e 0%, #dd6b20 50%, #d69e2e 100%);
+            color: var(--white) !important;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 700 !important;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 0 12px rgba(237, 137, 54, 0.6);
+            animation: pulseGlow 1.8s infinite alternate;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.2s;
+        }
+        .lang-switch-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 18px rgba(237, 137, 54, 0.9);
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 5px rgba(229, 62, 62, 0.4), 0 0 10px rgba(237, 137, 54, 0.4); transform: scale(1); }
+            100% { box-shadow: 0 0 18px rgba(229, 62, 62, 0.8), 0 0 25px rgba(237, 137, 54, 0.8); transform: scale(1.03); }
+        }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); padding: 140px 0 70px; text-align: center; }
+        .hero h1 { color: var(--white); font-size: 2.5rem; margin-bottom: 15px; line-height: 1.2; font-weight: 800; }
+        .hero p.subtitle { font-size: 1.15rem; max-width: 800px; margin: 0 auto 30px; opacity: 0.95; }
+        .hero-pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; text-align: left; }
+        .pillar-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; padding: 20px; color: var(--white); }
+        .pillar-card h3 { color: var(--accent-color); font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+        /* Solapa Importancia / Bilingual Tabs */
+        .why-section { padding: 80px 0; background-color: var(--white); }
+        .why-header { text-align: center; margin-bottom: 40px; }
+        .why-header h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        .why-header p { color: var(--text-light); max-width: 700px; margin: 0 auto; }
+        
+        .tab-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .tab-btn { background: var(--bg-light); border: 2px solid #e2e8f0; padding: 12px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; color: var(--text-dark); transition: all 0.3s ease; }
+        .tab-btn.active, .tab-btn:hover { background: var(--secondary-color); color: var(--white); border-color: var(--secondary-color); }
+
+        .view-controls { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 25px; background: #edf2f7; padding: 10px 20px; border-radius: 20px; width: fit-content; margin-left: auto; margin-right: auto; }
+        .view-controls label { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); cursor: pointer; }
+
+        .tab-content { display: none; background: var(--bg-light); border-radius: 12px; padding: 30px; border: 1px solid #e2e8f0; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .bilingual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .bilingual-box { background: var(--white); padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.03); border-top: 4px solid var(--secondary-color); }
+        .bilingual-box.en { border-top-color: var(--accent-color); }
+        .bilingual-box h3 { margin-bottom: 15px; font-size: 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+        .audio-btn { background: #edf2f7; border: none; padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 5px; color: var(--text-dark); }
+        .audio-btn:hover { background: #e2e8f0; }
+
+        /* Sobre Mi */
+        .about { padding: 80px 0; background-color: var(--bg-light); }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .about-img { width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); justify-self: center; }
+        .about-img { width: 100%; max-width: 380px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); justify-self: center; }
         .about-text h2 { margin-bottom: 20px; font-size: 2rem; }
         .about-text p { margin-bottom: 15px; color: var(--text-light); }
-        .services { padding: 80px 0; background-color: var(--bg-light); text-align: center; }
+
+        /* Servicios */
+        .services { padding: 80px 0; background-color: var(--white); text-align: center; }
         .services h2 { font-size: 2rem; margin-bottom: 10px; }
         .services > p { color: var(--text-light); margin-bottom: 50px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card { background: var(--white); padding: 40px 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease; text-align: left; border-top: 4px solid var(--secondary-color); }
-        .service-card:hover { transform: translateY(-5px); }
-        .service-card h3 { margin-bottom: 15px; font-size: 1.3rem; }
-        .service-card p { color: var(--text-light); font-size: 0.95rem; }
-        .modalities { padding: 80px 0; background-color: var(--white); text-align: center; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card { background: var(--bg-light); padding: 35px 25px; border-radius: 10px; transition: transform 0.3s ease; text-align: left; border-top: 4px solid var(--secondary-color); }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        /* Modalidades */
+        .modalities { padding: 80px 0; background-color: var(--bg-light); text-align: center; }
         .modalities h2 { font-size: 2rem; margin-bottom: 40px; }
-        .modalities-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-        .modality-item { flex: 1; min-width: 280px; background: var(--bg-light); padding: 30px; border-radius: 10px; text-align: center; }
-        .modality-item h3 { color: var(--secondary-color); margin-bottom: 10px; }
-        .test-section { padding: 80px 0; background-color: var(--bg-light); }
-        .test-container { background: var(--white); padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; }
-        .test-container h2 { text-align: center; margin-bottom: 10px; }
-        .test-intro { text-align: center; color: var(--text-light); margin-bottom: 30px; }
+        .modalities-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .modality-item { flex: 1; min-width: 280px; background: var(--white); padding: 35px; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.03); }
+
+        /* Test Section */
+        .test-section { padding: 80px 0; background-color: var(--white); }
+        .test-container { background: var(--bg-light); padding: 40px; border-radius: 12px; max-width: 800px; margin: 0 auto; border: 1px solid #e2e8f0; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 5px; }
-        .form-group input[type="text"], .form-group input[type="email"] { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px; font-size: 1rem; }
-        .question-card { background: var(--bg-light); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--secondary-color); }
+        .form-group input[type="text"], .form-group input[type="email"] { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 1rem; }
+        .question-card { background: var(--white); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--secondary-color); }
         .question-card p { font-weight: 600; margin-bottom: 10px; }
-        .question-card input[type="text"] { width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 4px; }
-        .results-box { display: none; margin-top: 30px; padding: 20px; border-radius: 8px; background-color: #edf2f7; border: 2px solid var(--secondary-color); }
-        .results-box h3 { margin-bottom: 15px; }
-        .correction-item { margin-bottom: 10px; padding: 10px; border-radius: 5px; background: white; }
+        .question-card input[type="text"] { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 4px; }
+
+        .results-box { display: none; margin-top: 30px; padding: 25px; border-radius: 8px; background-color: #edf2f7; border: 2px solid var(--secondary-color); }
+        .correction-item { margin-bottom: 10px; padding: 12px; border-radius: 5px; background: white; }
         .correction-item.correct { border-left: 4px solid var(--correct-color); }
         .correction-item.incorrect { border-left: 4px solid var(--incorrect-color); }
+
+        /* Contacto */
         .contact { padding: 80px 0; background-color: var(--primary-color); color: var(--white); text-align: center; }
-        .contact h2 { color: var(--white); font-size: 2rem; margin-bottom: 20px; }
+        .contact h2 { color: var(--white); font-size: 2rem; margin-bottom: 15px; }
         .contact p { margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9; }
         .contact-info { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
         .contact-item { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
         .contact-item a { color: var(--white); text-decoration: none; font-weight: 600; }
-        .contact-item a:hover { color: var(--accent-color); }
-        footer { background-color: #0f2440; color: var(--text-light); text-align: center; padding: 20px 0; font-size: 0.9rem; }
+
+        footer { background-color: #0f2440; color: var(--text-light); text-align: center; padding: 25px 0; font-size: 0.9rem; }
+
+        @media (max-width: 1024px) {
+            .nav-container { flex-direction: column; gap: 12px; }
+            nav ul { gap: 10px; flex-wrap: wrap; justify-content: center; }
+            .hero { padding: 190px 0 60px; }
+        }
         @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 15px; }
-            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
             .hero h1 { font-size: 2rem; }
             .about-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero { padding: 140px 0 80px; }
+            .bilingual-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -92,123 +187,215 @@
             <a href="#" class="logo">Gonzalo <span>Gutiérrez</span></a>
             <nav>
                 <ul>
-                    <li><a href="#sobre-mi">Sobre Mí</a></li>
-                    <li><a href="#servicios">Clases</a></li>
-                    <li><a href="#modalidades">Modalidades</a></li>
-                    <li><a href="#test-nivel">Test de Nivel</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#por-que-ingles" data-i18n="navWhy">¿Por qué Inglés?</a></li>
+                    <li><a href="#sobre-mi" data-i18n="navAbout">Sobre Mí</a></li>
+                    <li><a href="#servicios" data-i18n="navServices">Clases</a></li>
+                    <li><a href="#modalidades" data-i18n="navModalities">Modalidades</a></li>
+                    <li><a href="#test-nivel" data-i18n="navTest">Test Secundaria</a></li>
+                    <li><a href="test-kids.html" class="nav-kids-link" data-i18n="navKids">🎈 Test Niños</a></li>
+                    <li><a href="#contacto" data-i18n="navContact">Contacto</a></li>
+                    <li>
+                        <button id="langToggleBtn" class="lang-switch-btn" onclick="toggleLanguage()">
+                            <span id="langIcon">🇬🇧</span> <span id="langBtnText">ENGLISH VERSION</span>
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <h1>Domina el Inglés con un Plan Hecho a tu Medida</h1>
-            <p>Clases online personalizadas para estudiantes secundarios, universitarios y preparación de exámenes internacionales. Aprende a tu ritmo, desde cualquier lugar.</p>
-            <a href="https://wa.me/5492995495211" class="btn" target="_blank">¡Agenda tu Clase de Prueba!</a>
+            <h1 data-i18n="heroTitle">Domina el Inglés y Abre Nuevas Oportunidades</h1>
+            <p class="subtitle" data-i18n="heroSubtitle">Clases online personalizadas para nivel secundario, universitario y exámenes internacionales. Transforma tu aprendizaje con un método adaptado a tus metas.</p>
+            <a href="https://wa.me/5492995495211" class="btn" target="_blank" data-i18n="heroCta">¡Agenda tu Clase de Prueba!</a>
+
+            <div class="hero-pillars">
+                <div class="pillar-card">
+                    <h3 data-i18n="pillar1Title">💼 Crecimiento Profesional</h3>
+                    <p data-i18n="pillar1Desc">Accede a ofertas laborales internacionales y duplica tu proyección profesional.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3 data-i18n="pillar2Title">🎓 Éxito Académico</h3>
+                    <p data-i18n="pillar2Desc">Aprende a comprender literatura académica y aprueba tus exámenes sin estrés.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3 data-i18n="pillar3Title">🌍 Conexión Sin Fronteras</h3>
+                    <p data-i18n="pillar3Desc">Comunícate con confianza en cualquier país, viaje o entorno multicultural.</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- SECCIÓN BILINGÜE Y ARGUMENTOS -->
+    <section id="por-que-ingles" class="why-section">
+        <div class="container">
+            <div class="why-header">
+                <h2 data-i18n="whyHeaderTitle">La Importancia de Aprender Inglés Hoy</h2>
+                <p data-i18n="whyHeaderDesc">Explora los argumentos clave organizados por áreas de impacto. Puedes alternar el idioma o comparar ambos en paralelo para practicar tu lectura.</p>
+            </div>
+
+            <div class="view-controls">
+                <span style="font-size:0.9rem; font-weight:bold; color:var(--text-dark);" data-i18n="viewModeLabel">Modo de Lectura:</span>
+                <label><input type="radio" name="langView" value="both" checked onclick="changeViewMode('both')"> <span data-i18n="modeBoth">Bilingüe (Ambos)</span></label>
+                <label><input type="radio" name="langView" value="es" onclick="changeViewMode('es')"> <span data-i18n="modeEs">Solo Español</span></label>
+                <label><input type="radio" name="langView" value="en" onclick="changeViewMode('en')"> <span data-i18n="modeEn">Only English</span></label>
+            </div>
+
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab(event, 'laboral')" data-i18n="tabWork">💼 Ámbito Laboral</button>
+                <button class="tab-btn" onclick="openTab(event, 'academico')" data-i18n="tabAcademic">🎓 Ámbito Académico</button>
+                <button class="tab-btn" onclick="openTab(event, 'personal')" data-i18n="tabPersonal">✈️ Desarrollo Personal</button>
+            </div>
+
+            <!-- Tab 1: Laboral -->
+            <div id="laboral" class="tab-content active">
+                <div class="bilingual-grid">
+                    <div class="bilingual-box es-box">
+                        <h3>Oportunidades en el Trabajo 🇦🇷 <button class="audio-btn" onclick="speakText('es-lab')">🔊 Escuchar</button></h3>
+                        <p id="es-lab">El inglés es el idioma universal de los negocios, la tecnología y el comercio internacional. Dominarlo amplía de forma directa tus posibilidades de empleo, permitiéndote aplicar a puestos remotos o multinacionales, negociar mejores condiciones salariales y colaborar con equipos globales.</p>
+                    </div>
+                    <div class="bilingual-box en en-box">
+                        <h3>Career Opportunities 🇬🇧 <button class="audio-btn" onclick="speakText('en-lab', 'en-US')">🔊 Listen</button></h3>
+                        <p id="en-lab">English is the universal language of business, technology, and international trade. Mastering it directly expands your employment prospects, allowing you to apply for remote or multinational positions, negotiate better salaries, and collaborate with global teams.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Académico -->
+            <div id="academico" class="tab-content">
+                <div class="bilingual-grid">
+                    <div class="bilingual-box es-box">
+                        <h3>Acceso al Conocimiento 🇦🇷 <button class="audio-btn" onclick="speakText('es-acad')">🔊 Escuchar</button></h3>
+                        <p id="es-acad">Más del 50% del contenido publicado en la web y la gran mayoría de la literatura científica y tecnológica está en inglés. Hablar el idioma te permite acceder de primera mano a investigaciones avanzadas, becas de estudio internacionales y programas de intercambio universitario.</p>
+                    </div>
+                    <div class="bilingual-box en en-box">
+                        <h3>Access to Knowledge 🇬🇧 <button class="audio-btn" onclick="speakText('en-acad', 'en-US')">🔊 Listen</button></h3>
+                        <p id="en-acad">More than 50% of published web content and the vast majority of scientific and technological literature is in English. Speaking the language gives you first-hand access to advanced research, international scholarships, and university exchange programs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Personal -->
+            <div id="personal" class="tab-content">
+                <div class="bilingual-grid">
+                    <div class="bilingual-box es-box">
+                        <h3>Viajes y Autonomía 🇦🇷 <button class="audio-btn" onclick="speakText('es-pers')">🔊 Escuchar</button></h3>
+                        <p id="es-pers">Saber inglés te otorga libertad total al viajar. Te permite comunicarte con fluidez en cualquier país del mundo, resolver situaciones cotidianas con independencia, disfrutar del cine, la literatura y la música en su idioma original y conectar con personas de diferentes culturas.</p>
+                    </div>
+                    <div class="bilingual-box en en-box">
+                        <h3>Travel and Independence 🇬🇧 <button class="audio-btn" onclick="speakText('en-pers', 'en-US')">🔊 Listen</button></h3>
+                        <p id="en-pers">Knowing English gives you complete freedom when traveling. It allows you to communicate fluently in any country, solve daily situations independently, enjoy movies, literature, and music in their original language, and connect with people from diverse cultures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
     <section id="sobre-mi" class="about">
         <div class="container about-grid">
-            <img src="gonza.jpg" alt="Gonzalo Gabriel Gutiérrez - Profesor de Inglés" class="about-img">
+            <img src="gonza.jpg" alt="Gonzalo Gabriel Gutiérrez" class="about-img">
             <div class="about-text">
-                <h2>Hola, soy Gonzalo Gabriel Gutiérrez</h2>
-                <p>Soy profesor de inglés radicado en la vibrante Ciudad de Buenos Aires. Mi pasión es ayudar a los estudiantes a superar sus barreras con el idioma, transformando el aprendizaje en una experiencia dinámica y adaptada a sus necesidades reales.</p>
-                <p>Entiendo los desafíos del sistema educativo actual, tanto a nivel secundario como universitario. Por eso, mis clases no se basan en memorizar, sino en comprender y aplicar el idioma para que alcances tus objetivos académicos y profesionales.</p>
-                <p>Ya sea que necesites aprobar un examen, prepararte para un test de nivel o simplemente ganar fluidez, juntos vamos a diseñar un plan de estudio que se ajuste a tus tiempos y metas.</p>
+                <h2 data-i18n="aboutTitle">Hola, soy Gonzalo Gabriel Gutiérrez</h2>
+                <p data-i18n="aboutP1">Soy profesor de inglés radicado en la Ciudad de Buenos Aires. Mi objetivo es acompañarte a superar barreras idiomáticas mediante clases dinámicas, enfocadas en objetivos reales y medición de progreso.</p>
+                <p data-i18n="aboutP2">Comprendo los desafíos del sistema educativo en niveles secundario y universitario. Por eso, mis clases combinan gramática aplicada, práctica oral y preparación estratégica para evaluaciones.</p>
+                <p data-i18n="aboutP3">Diseñemos juntos un plan adaptado a tu disponibilidad horaria y ritmo de aprendizaje.</p>
             </div>
         </div>
     </section>
 
+    <!-- SERVICIOS -->
     <section id="servicios" class="services">
         <div class="container">
-            <h2>¿Qué ofrezco?</h2>
-            <p>Programas diseñados para cada etapa de tu aprendizaje</p>
+            <h2 data-i18n="servicesTitle">¿Qué ofrezco?</h2>
+            <p data-i18n="servicesSubtitle">Programas diseñados para cada etapa de tu aprendizaje</p>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Preparación Secundaria</h3>
-                    <p>Apoyo escolar integral para nivel secundario. Refuerzo de gramática, vocabulario y preparación para evaluaciones escolares. Ideal para asegurar la nota y entender la materia.</p>
+                    <h3 data-i18n="s1Title">Preparación Secundaria</h3>
+                    <p data-i18n="s1Desc">Refuerzo integral de contenidos escolares, preparación para exámenes trimestrales y finales.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Inglés Universitario</h3>
-                    <p>Preparación para exámenes de ingreso y cursadas universitarias. Comprensión de textos académicos, redacción y expresión oral para destacarte en tu carrera.</p>
+                    <h3 data-i18n="s2Title">Inglés Universitario</h3>
+                    <p data-i18n="s2Desc">Comprensión de textos académicos, técnicas de lectocomprensión y exámenes de suficiencia.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Exámenes Internacionales</h3>
-                    <p>Entrenamiento específico para exámenes como Cambridge (PET, FCE, CAE), TOEFL o IELTS. Estrategias, práctica intensiva y simulacros con corrección detallada.</p>
+                    <h3 data-i18n="s3Title">Exámenes Internacionales</h3>
+                    <p data-i18n="s3Desc">Entrenamiento estratégico para Cambridge (PET, FCE, CAE), TOEFL e IELTS con simulacros.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Test y Ejercicios Adaptados</h3>
-                    <p>No uso materiales genéricos. Creo tests y ejercicios específicos basados en tus debilidades y fortalezas, para que practiques exactamente lo que necesitas mejorar.</p>
+                    <h3 data-i18n="s4Title">Ejercicios Personalizados</h3>
+                    <p data-i18n="s4Desc">Materiales a medida según tus puntos a reforzar, evitando guías genéricas.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Clases de Conversación</h3>
-                    <p>Desarrolla tu fluidez y confianza en un ambiente relajado. Temas de interés general, actualidad y corrección en tiempo real para mejorar tu pronunciación.</p>
+                    <h3 data-i18n="s5Title">Conversación y Fluidez</h3>
+                    <p data-i18n="s5Desc">Práctica oral interactiva para perder el temor a hablar y perfeccionar tu pronunciación.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Apoyo Académico General</h3>
-                    <p>Ayuda con tareas, proyectos y trabajos prácticos. Te enseño a investigar, redactar y presentar en inglés de manera profesional.</p>
+                    <h3 data-i18n="s6Title">Apoyo Académico General</h3>
+                    <p data-i18n="s6Desc">Tutoría para tareas, proyectos especiales y redacción formal de documentos.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- MODALIDADES -->
     <section id="modalidades" class="modalities">
         <div class="container">
-            <h2>Modalidades de Clases</h2>
+            <h2 data-i18n="modalitiesTitle">Modalidades de Clases</h2>
             <div class="modalities-container">
                 <div class="modality-item">
-                    <h3>Sincrónicas (En Vivo)</h3>
-                    <p>Clases en tiempo real por videollamada (Zoom/Meet). Interacción directa, corrección inmediata y la posibilidad de resolver dudas al instante. El mejor ambiente para aprender.</p>
+                    <h3 data-i18n="m1Title">Sincrónicas (En Vivo)</h3>
+                    <p data-i18n="m1Desc">Clases en tiempo real mediante Zoom o Google Meet. Interacción inmediata y corrección guiada.</p>
                 </div>
                 <div class="modality-item">
-                    <h3>Asincrónicas (A tu ritmo)</h3>
-                    <p>Materiales, ejercicios y tareas diseñados para que los completes cuando tengas tiempo. Ideal para complementar tus estudios o si tienes horarios complicados.</p>
+                    <h3 data-i18n="m2Title">Asincrónicas (A tu ritmo)</h3>
+                    <p data-i18n="m2Desc">Planificación semanal con entrega de ejercicios y feedback detallado por correo o audio.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- TEST DE NIVEL -->
     <section id="test-nivel" class="test-section">
         <div class="container">
             <div class="test-container">
-                <h2>Test de Nivelación - Nivel Secundario</h2>
-                <p class="test-intro">Completa las oraciones. No importa si usas mayúsculas o minúsculas. Al finalizar obtendrás tus resultados e informe por correo.</p>
+                <h2 data-i18n="testTitle">Test de Nivelación - Nivel Secundario</h2>
+                <p class="test-intro" style="text-align:center; color:var(--text-light); margin-bottom:20px;" data-i18n="testSubtitle">Completa las oraciones. Al finalizar obtendrás tu corrección e informe por correo.</p>
 
                 <form id="englishTestForm">
                     <div class="form-group">
-                        <label for="studentName">Nombre y Apellido:</label>
+                        <label for="studentName" data-i18n="lblStudentName">Nombre y Apellido:</label>
                         <input type="text" id="studentName" required placeholder="Ej. Juan Pérez">
                     </div>
                     <div class="form-group">
-                        <label for="studentEmail">Correo Electrónico (Gmail / Otro):</label>
+                        <label for="studentEmail" data-i18n="lblStudentEmail">Correo Electrónico:</label>
                         <input type="email" id="studentEmail" required placeholder="tu-email@gmail.com">
                     </div>
                     <hr style="margin: 20px 0; border: none; border-top: 1px solid #e2e8f0;">
 
                     <div class="question-card">
                         <p>1. She ______ (not / go) to school yesterday because she was sick.</p>
-                        <input type="text" id="q1" required placeholder="Escribe la respuesta...">
+                        <input type="text" id="q1" required placeholder="Escribe tu respuesta...">
                     </div>
                     <div class="question-card">
                         <p>2. While I was studying, my friends ______ (call) me.</p>
-                        <input type="text" id="q2" required placeholder="Escribe la respuesta...">
+                        <input type="text" id="q2" required placeholder="Escribe tu respuesta...">
                     </div>
                     <div class="question-card">
                         <p>3. If it rains tomorrow, we ______ (stay) at home.</p>
-                        <input type="text" id="q3" required placeholder="Escribe la respuesta...">
+                        <input type="text" id="q3" required placeholder="Escribe tu respuesta...">
                     </div>
                     <div class="question-card">
                         <p>4. They ______ (live) in Buenos Aires since 2018.</p>
-                        <input type="text" id="q4" required placeholder="Escribe la respuesta...">
+                        <input type="text" id="q4" required placeholder="Escribe tu respuesta...">
                     </div>
                     <div class="question-card">
                         <p>5. This house is ______ (big) than my old apartment.</p>
-                        <input type="text" id="q5" required placeholder="Escribe la respuesta...">
+                        <input type="text" id="q5" required placeholder="Escribe tu respuesta...">
                     </div>
-                    <button type="submit" class="btn" style="width: 100%;">Enviar Respuestas y Obtener Resultado</button>
+                    <button type="submit" class="btn" style="width: 100%;" data-i18n="btnSubmitTest">Enviar Respuestas y Obtener Resultado</button>
                 </form>
 
                 <div id="results" class="results-box">
@@ -220,29 +407,229 @@
         </div>
     </section>
 
+    <!-- CONTACTO -->
     <section id="contacto" class="contact">
         <div class="container">
-            <h2>¿Listo para empezar?</h2>
-            <p>Escríbeme para coordinar una clase de prueba y armar tu plan de estudio personalizado.</p>
+            <h2 data-i18n="contactTitle">¿Listo para empezar?</h2>
+            <p data-i18n="contactDesc">Escríbeme para coordinar tu clase de prueba y evaluar tu nivel actual.</p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <span>📍</span> <span>Ciudad de Buenos Aires</span>
+                    <span>📍</span> <span>Buenos Aires, Argentina</span>
                 </div>
                 <div class="contact-item">
                     <span>📱</span> <a href="https://wa.me/5492995495211" target="_blank">+54 9 299 549-5211</a>
                 </div>
             </div>
-            <a href="https://wa.me/5492995495211?text=Hola%20Gonzalo,%20me%20interesa%20tomar%20clases%20de%20inglés" class="btn btn-outline" target="_blank">Enviar Mensaje por WhatsApp</a>
+            <a href="https://wa.me/5492995495211?text=Hola%20Gonzalo,%20me%20interesa%20tomar%20clases%20de%20inglés" class="btn btn-outline" target="_blank" data-i18n="btnContactWsp">Enviar Mensaje por WhatsApp</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Gonzalo Gabriel Gutiérrez. Profesor de Inglés Online. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Gonzalo Gabriel Gutiérrez. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script>
+        // TRADUCCIONES IDIOMA GLOBAL
+        const translations = {
+            es: {
+                docTitle: "Gonzalo Gabriel Gutiérrez | Profesor de Inglés Online",
+                navWhy: "¿Por qué Inglés?",
+                navAbout: "Sobre Mí",
+                navServices: "Clases",
+                navModalities: "Modalidades",
+                navTest: "Test Secundaria",
+                navKids: "🎈 Test Niños",
+                navContact: "Contacto",
+                heroTitle: "Domina el Inglés y Abre Nuevas Oportunidades",
+                heroSubtitle: "Clases online personalizadas para nivel secundario, universitario y exámenes internacionales. Transforma tu aprendizaje con un método adaptado a tus metas.",
+                heroCta: "¡Agenda tu Clase de Prueba!",
+                pillar1Title: "💼 Crecimiento Profesional",
+                pillar1Desc: "Accede a ofertas laborales internacionales y duplica tu proyección profesional.",
+                pillar2Title: "🎓 Éxito Académico",
+                pillar2Desc: "Aprende a comprender literatura académica y aprueba tus exámenes sin estrés.",
+                pillar3Title: "🌍 Conexión Sin Fronteras",
+                pillar3Desc: "Comunícate con confianza en cualquier país, viaje o entorno multicultural.",
+                whyHeaderTitle: "La Importancia de Aprender Inglés Hoy",
+                whyHeaderDesc: "Explora los argumentos clave organizados por áreas de impacto. Puedes alternar el idioma o comparar ambos en paralelo para practicar tu lectura.",
+                viewModeLabel: "Modo de Lectura:",
+                modeBoth: "Bilingüe (Ambos)",
+                modeEs: "Solo Español",
+                modeEn: "Only English",
+                tabWork: "💼 Ámbito Laboral",
+                tabAcademic: "🎓 Ámbito Académico",
+                tabPersonal: "✈️ Desarrollo Personal",
+                aboutTitle: "Hola, soy Gonzalo Gabriel Gutiérrez",
+                aboutP1: "Soy profesor de inglés radicado en la Ciudad de Buenos Aires. Mi objetivo es acompañarte a superar barreras idiomáticas mediante clases dinámicas, enfocadas en objetivos reales y medición de progreso.",
+                aboutP2: "Comprendo los desafíos del sistema educativo en niveles secundario y universitario. Por eso, mis clases combinan gramática aplicada, práctica oral y preparación estratégica para evaluaciones.",
+                aboutP3: "Diseñemos juntos un plan adaptado a tu disponibilidad horaria y ritmo de aprendizaje.",
+                servicesTitle: "¿Qué ofrezco?",
+                servicesSubtitle: "Programas diseñados para cada etapa de tu aprendizaje",
+                s1Title: "Preparación Secundaria",
+                s1Desc: "Refuerzo integral de contenidos escolares, preparación para exámenes trimestrales y finales.",
+                s2Title: "Inglés Universitario",
+                s2Desc: "Comprensión de textos académicos, técnicas de lectocomprensión y exámenes de suficiencia.",
+                s3Title: "Exámenes Internacionales",
+                s3Desc: "Entrenamiento estratégico para Cambridge (PET, FCE, CAE), TOEFL e IELTS con simulacros.",
+                s4Title: "Ejercicios Personalizados",
+                s4Desc: "Materiales a medida según tus puntos a reforzar, evitando guías genéricas.",
+                s5Title: "Conversación y Fluidez",
+                s5Desc: "Práctica oral interactiva para perder el temor a hablar y perfeccionar tu pronunciación.",
+                s6Title: "Apoyo Académico General",
+                s6Desc: "Tutoría para tareas, proyectos especiales y redacción formal de documentos.",
+                modalitiesTitle: "Modalidades de Clases",
+                m1Title: "Sincrónicas (En Vivo)",
+                m1Desc: "Clases en tiempo real mediante Zoom o Google Meet. Interacción inmediata y corrección guiada.",
+                m2Title: "Asincrónicas (A tu ritmo)",
+                m2Desc: "Planificación semanal con entrega de ejercicios y feedback detallado por correo o audio.",
+                testTitle: "Test de Nivelación - Nivel Secundario",
+                testSubtitle: "Completa las oraciones. Al finalizar obtendrás tu corrección e informe por correo.",
+                lblStudentName: "Nombre y Apellido:",
+                lblStudentEmail: "Correo Electrónico:",
+                btnSubmitTest: "Enviar Respuestas y Obtener Resultado",
+                contactTitle: "¿Listo para empezar?",
+                contactDesc: "Escríbeme para coordinar tu clase de prueba y evaluar tu nivel actual.",
+                btnContactWsp: "Enviar Mensaje por WhatsApp"
+            },
+            en: {
+                docTitle: "Gonzalo Gabriel Gutiérrez | Online English Tutor",
+                navWhy: "Why English?",
+                navAbout: "About Me",
+                navServices: "Lessons",
+                navModalities: "Modalities",
+                navTest: "Highschool Test",
+                navKids: "🎈 Kids Test",
+                navContact: "Contact",
+                heroTitle: "Master English & Unlock New Global Opportunities",
+                heroSubtitle: "Personalized online classes for secondary school, university students, and international exams. Transform your learning with a goal-driven roadmap.",
+                heroCta: "Schedule Your Trial Lesson!",
+                pillar1Title: "💼 Professional Growth",
+                pillar1Desc: "Access global remote jobs and boost your international career path.",
+                pillar2Title: "🎓 Academic Success",
+                pillar2Desc: "Master academic reading and pass university exams effortlessly.",
+                pillar3Title: "🌍 Global Connection",
+                pillar3Desc: "Communicate with total confidence anywhere in the world.",
+                whyHeaderTitle: "Why Learning English Matters Today",
+                whyHeaderDesc: "Explore key arguments categorized by impact areas. You can switch view modes or compare side-by-side to practice your reading skills.",
+                viewModeLabel: "Reading Mode:",
+                modeBoth: "Bilingual (Side-by-side)",
+                modeEs: "Spanish Only",
+                modeEn: "English Only",
+                tabWork: "💼 Work & Career",
+                tabAcademic: "🎓 Academic Success",
+                tabPersonal: "✈️ Personal Growth",
+                aboutTitle: "Hi, I am Gonzalo Gabriel Gutiérrez",
+                aboutP1: "I am an ESL teacher based in Buenos Aires. My mission is to help you break language barriers through dynamic, goal-oriented classes with clear progress tracking.",
+                aboutP2: "I understand high school and university academic requirements. That is why my lessons combine applied grammar, spoken practice, and strategic test prep.",
+                aboutP3: "Let's build a customized study plan together adapted to your exact schedule and pace.",
+                servicesTitle: "What I Offer",
+                servicesSubtitle: "Tailored programs designed for every stage of your learning journey",
+                s1Title: "High School Support",
+                s1Desc: "Complete support for high school curricula, term exams, and grammar reinforcement.",
+                s2Title: "University English",
+                s2Desc: "Academic reading strategies, paper comprehension, and university placement exams.",
+                s3Title: "International Exams",
+                s3Desc: "Targeted training for Cambridge (PET, FCE, CAE), TOEFL, and IELTS with mock tests.",
+                s4Title: "Customized Exercises",
+                s4Desc: "Bespoke learning materials targeted directly at your specific weaknesses.",
+                s5Title: "Conversation & Fluency",
+                s5Desc: "Interactive speaking sessions to build confidence and refine your pronunciation.",
+                s6Title: "General Academic Help",
+                s6Desc: "Guidance for assignments, essays, presentations, and formal academic writing.",
+                modalitiesTitle: "Class Modalities",
+                m1Title: "Live Lessons (Synchronous)",
+                m1Desc: "Real-time classes via Zoom or Google Meet with instant feedback and guidance.",
+                m2Title: "Self-Paced (Asynchronous)",
+                m2Desc: "Weekly plans with exercise delivery, detailed email corrections, and voice notes.",
+                testTitle: "Placement Test - High School Level",
+                testSubtitle: "Complete the sentences below. You will receive immediate results and an email report.",
+                lblStudentName: "Full Name:",
+                lblStudentEmail: "Email Address:",
+                btnSubmitTest: "Submit Answers & View Result",
+                contactTitle: "Ready to get started?",
+                contactDesc: "Contact me to schedule a trial lesson and assess your current level.",
+                btnContactWsp: "Send WhatsApp Message"
+            }
+        };
+
+        let currentLang = 'es';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            const btnText = document.getElementById('langBtnText');
+            const icon = document.getElementById('langIcon');
+
+            if (currentLang === 'en') {
+                btnText.innerText = 'CAMBIAR A ESPAÑOL';
+                icon.innerText = '🇦🇷';
+            } else {
+                btnText.innerText = 'ENGLISH VERSION';
+                icon.innerText = '🇬🇧';
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    if (element.tagName === 'INPUT' && element.getAttribute('placeholder')) {
+                        element.placeholder = translations[currentLang][key];
+                    } else {
+                        element.innerText = translations[currentLang][key];
+                    }
+                }
+            });
+        }
+
+        // CONTROL DE SOLAPAS (TABS)
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            const tablinks = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // MODOS DE VISTA BILINGÜE
+        function changeViewMode(mode) {
+            const esBoxes = document.querySelectorAll('.es-box');
+            const enBoxes = document.querySelectorAll('.en-box');
+            const grids = document.querySelectorAll('.bilingual-grid');
+
+            if (mode === 'es') {
+                esBoxes.forEach(el => el.style.display = 'block');
+                enBoxes.forEach(el => el.style.display = 'none');
+                grids.forEach(g => g.style.gridTemplateColumns = '1fr');
+            } else if (mode === 'en') {
+                esBoxes.forEach(el => el.style.display = 'none');
+                enBoxes.forEach(el => el.style.display = 'block');
+                grids.forEach(g => g.style.gridTemplateColumns = '1fr');
+            } else {
+                esBoxes.forEach(el => el.style.display = 'block');
+                enBoxes.forEach(el => el.style.display = 'block');
+                grids.forEach(g => g.style.gridTemplateColumns = window.innerWidth > 768 ? '1fr 1fr' : '1fr');
+            }
+        }
+
+        // TEXT-TO-SPEECH
+        function speakText(elementId, lang = 'es-ES') {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const text = document.getElementById(elementId).innerText;
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang;
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Tu navegador no soporta síntesis de voz.');
+            }
+        }
+
+        // LOGICA DE EVALUACION Y EMAILJS
         const correctAnswers = {
             q1: ["didn't go", "did not go"],
             q2: ["called"],
@@ -254,14 +641,13 @@
         document.getElementById('englishTestForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Aquí estaba el error de tipeo, ahora está corregido a minúsculas
             const studentName = document.getElementById('studentName').value.trim();
             const studentEmail = document.getElementById('studentEmail').value.trim();
 
             let score = 0;
             const totalQuestions = 5;
             let correctionsHTML = '';
-            let emailReport = `Reporte del Test de Nivel - Alumno: ${studentName}\nEmail: ${studentEmail}\n\n`;
+            let emailReport = `Reporte del Test - Alumno: ${studentName}\nEmail: ${studentEmail}\n\n`;
 
             for (let i = 1; i <= totalQuestions; i++) {
                 const inputVal = document.getElementById(`q${i}`).value.trim().toLowerCase();
@@ -273,36 +659,25 @@
                     correctionsHTML += `
                         <div class="correction-item correct">
                             <p><strong>Pregunta ${i}:</strong> ¡Correcto! Respondiste: <em>"${document.getElementById(`q${i}`).value}"</em></p>
-                        </div>
-                    `;
+                        </div>`;
                     emailReport += `Pregunta ${i}: Correcta (${document.getElementById(`q${i}`).value})\n`;
                 } else {
                     correctionsHTML += `
                         <div class="correction-item incorrect">
                             <p><strong>Pregunta ${i}:</strong> Tu respuesta: <em>"${document.getElementById(`q${i}`).value}"</em></p>
                             <p>👉 Respuesta sugerida: <strong>${validAnswers.join(' / ')}</strong></p>
-                        </div>
-                    `;
+                        </div>`;
                     emailReport += `Pregunta ${i}: Incorrecta. Respuesta del alumno: "${document.getElementById(`q${i}`).value}". Correcta: ${validAnswers.join(' / ')}\n`;
                 }
             }
 
             const percentage = (score / totalQuestions) * 100;
-            let levelMessage = '';
-
-            if (percentage >= 80) {
-                levelMessage = "Excelente nivel. Tienes muy buenas bases de gramática secundario/intermedio.";
-            } else if (percentage >= 50) {
-                levelMessage = "Nivel Intermedio Medio. Tienes buenas bases pero hay temas gramaticales que reforzar.";
-            } else {
-                levelMessage = "Nivel Inicial / A reforzar. Se recomienda apoyo con un plan personalizado.";
-            }
+            let levelMessage = percentage >= 80 ? "Excelente nivel. Tienes muy buenas bases gramaticales." : (percentage >= 50 ? "Nivel Intermedio Medio. Se recomienda reforzar ciertos aspectos." : "Nivel Inicial / A reforzar. Recomendado plan personalizado.");
 
             document.getElementById('scoreText').innerText = `Tu Puntaje: ${score} / ${totalQuestions} (${percentage}%)`;
             document.getElementById('feedbackSummary').innerText = `Diagnóstico: ${levelMessage}`;
             document.getElementById('correctionsList').innerHTML = correctionsHTML;
             document.getElementById('results').style.display = 'block';
-
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 
             const templateParams = {
@@ -315,12 +690,10 @@
             };
 
             emailjs.send('service_rgmgn8s', 'template_8n3ip4h', templateParams)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    alert('¡Resultados generados y enviados exitosamente por correo!');
+                .then(function() {
+                    alert('¡Resultados procesados y enviados exitosamente!');
                 }, function(error) {
-                    console.error('FAILED...', error);
-                    alert('Error al enviar. Revisá la consola (F12) para ver el detalle exacto.');
+                    console.error('EmailJS error:', error);
                 });
         });
     </script>

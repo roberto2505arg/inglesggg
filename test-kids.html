@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun English Kids Test | Gonzalo Gutiérrez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("Uu_RL7RrFthCiDEbd");
+        })();
+    </script>
+    <style>
+        :root {
+            --primary-bg: #E0F7FA;
+            --card-bg: #FFFFFF;
+            --accent-pink: #FF4081;
+            --accent-yellow: #FFD54F;
+            --accent-green: #00E676;
+            --accent-blue: #29B6F6;
+            --text-color: #263238;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            padding-bottom: 50px;
+        }
+
+        header {
+            background-color: #FFF;
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .nav-back {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        h1.title {
+            font-family: 'Fredoka One', cursive;
+            color: var(--accent-pink);
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 0px #FFEB3B;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .kids-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 4px solid #B2EBF2;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #546E7A;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 3px solid #B2EBF2;
+            border-radius: 15px;
+            font-size: 1rem;
+            outline: none;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .question-block {
+            background: #F1F8E9;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 3px dashed #AED581;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .question-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            color: #33691E;
+        }
+
+        .emoji-display {
+            font-size: 4rem;
+            text-align: center;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .audio-btn {
+            background: var(--accent-yellow);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 0 #FBC02D;
+            transition: transform 0.1s;
+        }
+        .audio-btn:active { transform: translateY(3px); box-shadow: none; }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .option-label {
+            background: #FFF;
+            border: 3px solid #C5E1A5;
+            border-radius: 15px;
+            padding: 12px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .option-label input { display: none; }
+
+        .option-label:hover {
+            background: #E8F5E9;
+            transform: scale(1.02);
+        }
+
+        .option-label.selected {
+            background: var(--accent-blue);
+            color: #FFF;
+            border-color: #0288D1;
+        }
+
+        .submit-btn {
+            background: var(--accent-pink);
+            color: #FFF;
+            border: none;
+            width: 100%;
+            padding: 18px;
+            border-radius: 20px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #C2185B;
+            transition: transform 0.1s;
+        }
+        .submit-btn:hover { transform: translateY(-2px); }
+        .submit-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #C2185B; }
+
+        .results-card {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: #FFF;
+            border-radius: 25px;
+            margin-top: 30px;
+            border: 4px solid var(--accent-yellow);
+        }
+
+        .badge-icon { font-size: 5rem; margin-bottom: 10px; }
+
+        .stars { font-size: 2.5rem; margin: 15px 0; color: #FFC107; }
+
+        @media (max-width: 600px) {
+            .options-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="nav-back">⬅️ Volver a la Página Principal</a>
+        <h1 class="title">🎈 Fun Kids English Challenge 🐱🎨</h1>
+    </header>
+
+    <div class="container">
+        <div class="kids-card">
+            <p class="intro-text">¡Hola! Responde las preguntas seleccionando la opción correcta. ¡Puedes presionar el botón 🔊 para escuchar la palabra en inglés!</p>
+
+            <form id="kidsTestForm">
+                <div class="form-group">
+                    <label for="childName">👦👧 Nombre del Pequeño/a:</label>
+                    <input type="text" id="childName" required placeholder="Ej. Sofía">
+                </div>
+                <div class="form-group">
+                    <label for="childAge">🎂 Edad:</label>
+                    <select id="childAge" required>
+                        <option value="5">5 Años</option>
+                        <option value="6">6 Años</option>
+                        <option value="7">7 Años</option>
+                        <option value="8">8 Años</option>
+                        <option value="9">9 Años</option>
+                        <option value="10">10 Años</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="parentEmail">📧 Email del Padre / Tutor:</label>
+                    <input type="email" id="parentEmail" required placeholder="padre@gmail.com">
+                </div>
+
+                <hr style="margin: 25px 0; border: 2px dashed #B2EBF2;">
+
+                <!-- PREGUNTAS -->
+                <div id="questionsContainer"></div>
+
+                <button type="submit" class="submit-btn">⭐ ¡Finalizar y Ver Estrellas! ⭐</button>
+            </form>
+
+            <div id="kidsResults" class="results-card">
+                <div class="badge-icon" id="resultBadge">🏆</div>
+                <h2 id="resultTitle" style="font-family:'Fredoka One'; font-size:2rem; color:var(--accent-pink);"></h2>
+                <div class="stars" id="resultStars">⭐⭐⭐⭐⭐</div>
+                <p id="resultText" style="font-size:1.2rem; font-weight:bold; margin-bottom:20px;"></p>
+                <a href="index.html" class="nav-back" style="font-size:1.1rem; padding:12px 25px;">Ver Clases y Contactar al Profe Gonzalo</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questionsData = [
+            // COLORES (5)
+            { id: 1, type: "color", title: "¿Qué color es este?", emoji: "🔴", textToSpeak: "Red", options: ["Blue", "Red", "Green", "Yellow"], correct: "Red" },
+            { id: 2, type: "color", title: "¿Qué color es este?", emoji: "🔵", textToSpeak: "Blue", options: ["Yellow", "Purple", "Blue", "Red"], correct: "Blue" },
+            { id: 3, type: "color", title: "¿Qué color es este?", emoji: "🟢", textToSpeak: "Green", options: ["Green", "Orange", "Black", "Pink"], correct: "Green" },
+            { id: 4, type: "color", title: "¿Qué color es este?", emoji: "🟡", textToSpeak: "Yellow", options: ["White", "Yellow", "Blue", "Green"], correct: "Yellow" },
+            { id: 5, type: "color", title: "¿Qué color es este?", emoji: "⚫", textToSpeak: "Black", options: ["Red", "Pink", "Black", "Yellow"], correct: "Black" },
+            
+            // OBJETOS Y ANIMALES (10)
+            { id: 6, type: "object", title: "¿Cómo se dice en inglés?", emoji: "🐱", textToSpeak: "Cat", options: ["Dog", "Cat", "Bird", "Fish"], correct: "Cat" },
+            { id: 7, type: "object", title: "¿Cómo se dice en inglés?", emoji: "🐶", textToSpeak: "Dog", options: ["Lion", "Rabbit", "Dog", "Cat"], correct: "Dog" },
+            { id: 8, type: "object", title: "¿Cómo se dice en inglés?", emoji: "🌳", textToSpeak: "Tree", options: ["Tree", "Flower", "House", "Sun"], correct: "Tree" },
+            { id: 9, type: "object", title: "¿Cómo se dice en inglés?", emoji: "🏠", textToSpeak: "House", options: ["Car", "School", "House", "Book"], correct: "House" },
+            { id: 10, type: "object", title: "¿Cómo se dice en inglés?", emoji: "☀️", textToSpeak: "Sun", options: ["Moon", "Star", "Sun", "Cloud"], correct: "Sun" },
+            { id: 11, type: "object", title: "¿Cómo se dice en inglés?", emoji: "🍎", textToSpeak: "Apple", options: ["Banana", "Apple", "Orange", "Watermelon"], correct: "Apple" },
+            { id: 12, type: "object", title: "¿Cómo se dice en inglés?", emoji: "🚗", textToSpeak: "Car", options: ["Bus", "Bike", "Car", "Plane"], correct: "Car" },
+            { id: 13, type: "object", title: "¿Cómo se dice en inglés?", emoji: "📚", textToSpeak: "Book", options: ["Pencil", "Book", "Bag", "Chair"], correct: "Book" },
+            { id: 14, type: "object", title: "¿Cómo se dice en inglés?", emoji: "🐟", textToSpeak: "Fish", options: ["Bird", "Duck", "Fish", "Frog"], correct: "Fish" },
+            { id: 15, type: "object", title: "¿Cómo se dice en inglés?", emoji: "🎈", textToSpeak: "Balloon", options: ["Ball", "Balloon", "Toy", "Gift"], correct: "Balloon" }
+        ];
+
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            let html = '';
+
+            questionsData.forEach((q, idx) => {
+                html += `
+                <div class="question-block">
+                    <div class="question-header">
+                        <span class="question-title">Pregunta ${idx + 1} de 15</span>
+                        <button type="button" class="audio-btn" onclick="speakAudio('${q.textToSpeak}')">🔊 Pronunciar</button>
+                    </div>
+                    <p style="font-weight:bold; font-size:1.1rem; text-align:center;">${q.title}</p>
+                    <span class="emoji-display">${q.emoji}</span>
+                    <div class="options-grid">
+                        ${q.options.map(opt => `
+                            <label class="option-label" onclick="selectOption(this, 'q_${q.id}')">
+                                <input type="radio" name="q_${q.id}" value="${opt}" required>
+                                ${opt}
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function selectOption(labelEl, groupName) {
+            document.querySelectorAll(`input[name="${groupName}"]`).forEach(inp => {
+                inp.parentElement.classList.remove('selected');
+            });
+            labelEl.classList.add('selected');
+        }
+
+        function speakAudio(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        document.getElementById('kidsTestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const childName = document.getElementById('childName').value.trim();
+            const childAge = document.getElementById('childAge').value;
+            const parentEmail = document.getElementById('parentEmail').value.trim();
+
+            let score = 0;
+            let report = `Test Infantil (5-10 años)\nNombre: ${childName} (${childAge} años)\nEmail Tutor: ${parentEmail}\n\n`;
+
+            questionsData.forEach(q => {
+                const selected = document.querySelector(`input[name="q_${q.id}"]:checked`);
+                const val = selected ? selected.value : '';
+                if (val === q.correct) {
+                    score++;
+                    report += `Q${q.id} (${q.textToSpeak}): Correcta (${val})\n`;
+                } else {
+                    report += `Q${q.id} (${q.textToSpeak}): Incorrecta (Elegida: ${val} | Correcta: ${q.correct})\n`;
+                }
+            });
+
+            const percentage = Math.round((score / 15) * 100);
+            let stars = "⭐⭐⭐⭐⭐";
+            let badge = "🏆";
+            let title = "¡Increíble Trabajo!";
+
+            if (score < 10) {
+                stars = "⭐⭐⭐";
+                badge = "🌟";
+                title = "¡Muy Buen Intento!";
+            } else if (score < 14) {
+                stars = "⭐⭐⭐⭐";
+                badge = "🥇";
+                title = "¡Genial!";
+            }
+
+            document.getElementById('resultBadge').innerText = badge;
+            document.getElementById('resultTitle').innerText = `${title} ${childName}`;
+            document.getElementById('resultStars').innerText = stars;
+            document.getElementById('resultText').innerText = `Acertaste ${score} de 15 preguntas (${percentage}%). ¡Sigue practicando tu inglés!`;
+
+            document.getElementById('kidsTestForm').style.display = 'none';
+            document.getElementById('kidsResults').style.display = 'block';
+
+            // Enviar por EmailJS
+            const templateParams = {
+                student_name: `${childName} (${childAge} años)`,
+                student_email: parentEmail,
+                score: `${score}/15`,
+                percentage: `${percentage}%`,
+                feedback: `Test infantil completado con ${stars}`,
+                report_details: report
+            };
+
+            emailjs.send('service_rgmgn8s', 'template_8n3ip4h', templateParams)
+                .then(function() {
+                    console.log('Email enviado correctamente');
+                }, function(err) {
+                    console.error('Error enviando correo:', err);
+                });
+        });
+
+        renderQuestions();
+    </script>
+</body>
+</html>
